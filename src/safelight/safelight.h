@@ -24,3 +24,4 @@ void safelightOn();
 
 void increaseSafelightBrightness();
 void decreaseSafelightBrightness();
+void setSafelightBrightness(float percent);

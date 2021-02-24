@@ -61,3 +61,43 @@ void decreaseDisplayBrightness() {
     if (displayBrightness > DISPLAY_MIN_BRIGHTNESS) displayBrightness--;
     display.setBrightness(displayBrightness);
 };
+
+void setDisplayBrightness(float percent) {
+    if (percent > 1) percent = 1.0;
+    if (percent < 0) percent = 0.0;
+    displayBrightness = ((DISPLAY_MAX_BRIGHTNESS - DISPLAY_MIN_BRIGHTNESS) * percent) + DISPLAY_MIN_BRIGHTNESS;
+    if (displayBrightness > DISPLAY_MAX_BRIGHTNESS) displayBrightness = DISPLAY_MAX_BRIGHTNESS;
+    if (displayBrightness < DISPLAY_MIN_BRIGHTNESS) displayBrightness = DISPLAY_MIN_BRIGHTNESS;
+    display.setBrightness(displayBrightness);
+}
+
+void displayBlinkOn() {
+    display.blinkRate(HT16K33_BLINK_2HZ);
+};
+
+void displayBlinkOff() {
+    display.blinkRate(HT16K33_BLINK_OFF);
+};
+
+void setDisplay(const char* t) {
+    sprintf(displayString, "%.4s", t);
+}
+void setDisplay(int n) {
+    sprintf(displayString, "%4d", n);
+}
+void setDisplay(int i, char c) {
+    displayString[i] = c;
+}
+
+void printDisplay(const char* t) {
+    setDisplay(t);
+    updateDisplay();
+}
+void printDisplay(int n) {
+    setDisplay(n);
+    updateDisplay();
+}
+void printDisplay(int i, char c) {
+    setDisplay(i, c);
+    updateDisplay();
+}

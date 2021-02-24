@@ -14,6 +14,8 @@ void setupSafelight() {
 }
 
 void updateLEDs() {
+    if (safelightBrightness > SAFELIGHT_MAX_BRIGHTNESS) safelightBrightness = SAFELIGHT_MAX_BRIGHTNESS;
+    if (safelightBrightness < SAFELIGHT_MIN_BRIGHTNESS) safelightBrightness = SAFELIGHT_MIN_BRIGHTNESS;
     // for each led in the strip, incrementing by our skip value
     for (int l = 0; l < LED_COUNT; l += LED_SKIP) {
         // set the led to the specified red safelightBrightness
@@ -56,3 +58,10 @@ void decreaseSafelightBrightness() {
     if (safelightBrightness > SAFELIGHT_MIN_BRIGHTNESS) safelightBrightness--;
     updateLEDs();
 };
+
+void setSafelightBrightness(float percent) {
+    if (percent > 1) percent = 1.0;
+    if (percent < 0) percent = 0.0;
+    safelightBrightness = ((SAFELIGHT_MAX_BRIGHTNESS - SAFELIGHT_MIN_BRIGHTNESS) * percent) + SAFELIGHT_MIN_BRIGHTNESS;
+    updateLEDs();
+}

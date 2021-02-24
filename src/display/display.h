@@ -17,7 +17,20 @@
 #define DISPLAY_STARTUP_DURATION 1500
 
 void setupDisplay();
+void updateDisplay();
 void displayStartupAnimation();
 
 void increaseDisplayBrightness();
 void decreaseDisplayBrightness();
+void setDisplayBrightness(float percent);
+
+void displayBlinkOn();
+void displayBlinkOff();
+
+void setDisplay(const char* t);
+void setDisplay(int n);
+void setDisplay(int i, char c);
+
+void printDisplay(const char* t);
+void printDisplay(int n);
+void printDisplay(int i, char c);
