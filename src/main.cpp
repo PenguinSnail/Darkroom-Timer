@@ -7,9 +7,11 @@
 void setup() {
     // setup the safelight and run the startup animation
     setupSafelight();
-    startupAnimation();
+    setupDisplay();
+    displayStartupAnimation();
+    safelightStartupAnimation();
 }
 
 void loop() {
-    
+
 }

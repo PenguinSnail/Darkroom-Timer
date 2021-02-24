@@ -9,15 +9,18 @@
 // lit led interval (2 = alternating on/off/on/off)
 #define LED_SKIP 2
 
-// define brightness limits and a variable to store brightness
-#define MAX_BRIGHTNESS 32
-#define MIN_BRIGHTNESS 1
+// define brightness limits
+#define SAFELIGHT_MAX_BRIGHTNESS 32
+#define SAFELIGHT_MIN_BRIGHTNESS 1
 
 // duration of the startup glow
-#define STARTUP_DURATION 1500
+#define SAFELIGHT_STARTUP_DURATION 1500
 
 void setupSafelight();
-void startupAnimation();
+void safelightStartupAnimation();
 
 void safelightOff();
 void safelightOn();
+
+void increaseSafelightBrightness();
+void decreaseSafelightBrightness();
