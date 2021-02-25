@@ -18,6 +18,7 @@
 
 void setupDisplay();
 void updateDisplay();
+void clearDisplay();
 void displayStartupAnimation();
 
 void increaseDisplayBrightness();

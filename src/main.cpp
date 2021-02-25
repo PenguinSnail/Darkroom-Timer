@@ -84,6 +84,37 @@ void runTimer() {
     updateDisplay();
 }
 
+void focusMode() {
+    boolean active = true;
+    boolean released = false;
+    boolean exitPress = false;
+
+    safelightOff();
+    digitalWrite(RELAY_PIN, HIGH);
+
+    clearDisplay();
+    setDisplay(DISPLAY_LENGTH < 6 ? "FOC" : "FOCUS");
+    setDisplayDot(-1);
+    updateDisplay();
+
+    while (active) {
+        if (!released && digitalRead(RUN_PIN) == HIGH) {
+            delay(50);
+            if (digitalRead(RUN_PIN) == HIGH) released = true;
+        }
+        if (released && digitalRead(RUN_PIN) == LOW) {
+            delay(50);
+            if (digitalRead(RUN_PIN) == LOW) exitPress = true;
+        }
+        if (exitPress && digitalRead(RUN_PIN) == HIGH) {
+            active = false;
+        }
+    }
+
+    safelightOn();
+    digitalWrite(RELAY_PIN, LOW);
+}
+
 void setup() {
     brightness = MAX_BRIGHTNESS;
 
@@ -121,12 +152,16 @@ void loop() {
         // once it's released reset its state
         if (digitalRead(MODE_PIN) == HIGH) modePressed = false;
     }
-    
+
     if (setBrightMode) {
         brightModeLoop();
     } else {
         if (digitalRead(RUN_PIN) == LOW && millis() - runRelease > 50) {
-            runTimer();
+            if (setTime > 0) {
+                runTimer();
+            } else {
+                focusMode();
+            }
             // freeze until we release the run button
             while (digitalRead(RUN_PIN) == LOW) {}
             // reset the encoder in case it moved while running the timer

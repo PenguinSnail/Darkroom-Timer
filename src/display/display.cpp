@@ -15,6 +15,10 @@ void updateDisplay() {
     display.writeDisplay();
 }
 
+void clearDisplay() {
+    display.clear();
+}
+
 void setupDisplay() {
     displayBrightness = DISPLAY_MAX_BRIGHTNESS;
 
