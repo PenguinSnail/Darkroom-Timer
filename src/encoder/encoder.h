@@ -3,5 +3,5 @@
 
 #include "pins.h"
 
-int32_t getEncoderPosition();
+int getEncoderPosition();
 void resetEncoderPosition();

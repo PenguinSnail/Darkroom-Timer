@@ -4,6 +4,6 @@
 #define ENCODER_PIN_A 2
 #define ENCODER_PIN_B 3
 
-#define RELAY_PIN 10
-
-#define RUN_PIN 5
+#define RELAY_PIN 9
+#define RUN_PIN 7
+#define MODE_PIN 8

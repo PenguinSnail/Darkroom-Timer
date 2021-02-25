@@ -34,3 +34,6 @@ void setDisplay(int i, char c);
 void printDisplay(const char* t);
 void printDisplay(int n);
 void printDisplay(int i, char c);
+
+void setDisplayDot(int d);
+void printDisplayDot(int d);

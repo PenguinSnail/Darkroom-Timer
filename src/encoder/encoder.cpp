@@ -2,7 +2,7 @@
 
 Encoder enc(ENCODER_PIN_B, ENCODER_PIN_A);
 
-int32_t getEncoderPosition() {
+int getEncoderPosition() {
     return enc.read() / 4;
 }
 

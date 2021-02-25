@@ -28,8 +28,8 @@ void setupDisplay() {
     }
     dotPosition = -1;
     // set the display brightness and update the display
-    display.setBrightness(displayBrightness);
     updateDisplay();
+    display.setBrightness(displayBrightness);
 }
 
 void displayStartupAnimation() {
@@ -99,5 +99,13 @@ void printDisplay(int n) {
 }
 void printDisplay(int i, char c) {
     setDisplay(i, c);
+    updateDisplay();
+}
+
+void setDisplayDot(int d) {
+    if (d >= -1 && d < DISPLAY_LENGTH) dotPosition = d;
+}
+void printDisplayDot(int d) {
+    setDisplayDot(d);
     updateDisplay();
 }
